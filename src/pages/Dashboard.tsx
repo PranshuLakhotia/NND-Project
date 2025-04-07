@@ -112,10 +112,16 @@ const AttackActivity = () => {
 
 const AttackTypes = () => {
   const data = {
-    labels: ['SQL Injection', 'Brute Force', 'XSS', 'Port Scan', 'Other'],
+    labels: [
+      'Internal ARP Spoofing',
+      'External ARP Spoofing',
+      'Man-in-the-Middle',
+      'Denial of Service',
+      'MAC Flooding',
+    ],
     datasets: [
       {
-        data: [33, 29, 13, 17, 8],
+        data: [30, 20, 25, 15, 10], 
         backgroundColor: [
           '#8b5cf6',
           '#6366f1',
@@ -132,19 +138,28 @@ const AttackTypes = () => {
     plugins: {
       legend: {
         position: 'right' as const,
+        labels: {
+          color: '#fff', 
+        },
       },
       title: {
         display: true,
-        text: 'Distribution by attack vector',
+        text: 'ARP Spoofing Attack Types',
+        color: '#f0f0f0', 
+      },
+      tooltip: {
+        bodyColor: '#fff', 
+        titleColor: '#fff', 
       },
     },
   };
+  
 
   return (
     <Card>
       <CardContent>
         <Typography variant="h6" gutterBottom>
-          Attack Types
+          ARP Spoofing Types
         </Typography>
         <Box sx={{ height: 300 }}>
           <Pie data={data} options={options} />
@@ -153,6 +168,7 @@ const AttackTypes = () => {
     </Card>
   );
 };
+
 
 const AttackMap = () => {
   const svgRef = useRef<SVGSVGElement | null>(null);
@@ -351,7 +367,7 @@ const Dashboard = () => {
           />
         </Grid>
 
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12}  md={8}>
           <AttackActivity />
         </Grid>
         <Grid item xs={12} md={4}>
